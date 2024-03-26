@@ -110,3 +110,10 @@ ifconfig -a
 
 ![alt text](image-18.png)
 ### And here is a diagram to show you what it actually looks like creating a VPC and all of it’s resources if you do it the proper way having subnets in different AZ’s.
+
+
+![image](https://blog-bucket.s3.brilliant.com.bd/thumbnail/d137de4b-d012-482e-9c0b-4bbcfbf77d0a.png)
+
+![image](https://blog-bucket.s3.brilliant.com.bd/thumbnail/c047c9e7-d417-41f6-9285-bd4724920bd5.png)
+
+### And here is a diagram to show you what it actually looks like creating a VPC and all of it’s resources if you do it the proper way having subnets in different AZ’s.
