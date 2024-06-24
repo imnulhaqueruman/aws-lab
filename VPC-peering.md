@@ -6,9 +6,8 @@
 
 This setup involves two VPCs, each with one public and one private subnet. A Node.js server is deployed in the public subnet of the first VPC and in the private subnet of the second VPC. Bastion servers are deployed in the private subnets of both VPCs to allow secure SSH access. The Node.js service in the second VPC calls the service in the first VPC, and the latter traces the NAT IP of the request.
 
-## Architecture Diagram
 
-![Architecture Diagram](path/to/diagram.png)
+
 
 ## Steps to Create the Setup
 
