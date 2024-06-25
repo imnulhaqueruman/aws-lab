@@ -1,6 +1,4 @@
-Sure, I will update the document based on the images provided and check for any grammatical errors. Here's the revised documentation:
 
----
 
 # Multi-VPC Setup with Node.js and Bastion Hosts
 
