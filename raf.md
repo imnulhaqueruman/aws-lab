@@ -126,3 +126,116 @@ ifconfig -a
 ![image](https://blog-bucket.s3.brilliant.com.bd/thumbnail/c047c9e7-d417-41f6-9285-bd4724920bd5.png)
 
  And here is a diagram to show you what it actually looks like creating a VPC and all of it’s resources if you do it the proper way having subnets in different AZ’s.
+
+
+
+ To install Node.js and npm on an EC2 Ubuntu server, follow these steps:
+
+1. **Update the package index:**
+
+   ```sh
+   sudo apt update
+   ```
+
+2. **Install Node.js:**
+
+   You can install Node.js from the NodeSource repository. This will also install npm.
+
+   First, install the NodeSource PPA (Personal Package Archive):
+
+   ```sh
+   curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+   ```
+
+   Then, install Node.js and npm:
+
+   ```sh
+   sudo apt install -y nodejs
+   ```
+
+   This will install both Node.js and npm.
+
+3. **Verify the installation:**
+
+   Check the installed versions of Node.js and npm:
+
+   ```sh
+   node -v
+   npm -v
+   ```
+
+### Alternative Method: Installing with nvm (Node Version Manager)
+
+Using `nvm` (Node Version Manager) is another common way to install Node.js and npm. This method allows you to easily switch between different versions of Node.js.
+
+1. **Install nvm:**
+
+   ```sh
+   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+   ```
+
+   Activate `nvm` by running:
+
+   ```sh
+   source ~/.nvm/nvm.sh
+   ```
+
+   Or add this to your `.bashrc` or `.zshrc` file:
+
+   ```sh
+   export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+   ```
+
+2. **Install Node.js using nvm:**
+
+   ```sh
+   nvm install node   # Install the latest version
+   ```
+
+   Or install a specific version:
+
+   ```sh
+   nvm install 16     # Example: Install Node.js v16
+   ```
+
+3. **Verify the installation:**
+
+   ```sh
+   node -v
+   npm -v
+   ```
+
+### Summary
+
+You have two methods to install Node.js and npm on an Ubuntu EC2 instance: using the NodeSource repository or using `nvm`. Both methods are effective, but `nvm` provides more flexibility if you need to manage multiple versions of Node.js.
+
+## Overview
+
+This setup involves two VPCs, each with one public and one private subnet. A Node.js server is deployed in the public subnet of the first VPC and in the private subnet of the second VPC. Bastion server-1 is deployed in the private subnets of  VPC-1 and Bastion-server-2 is deployed in Public subnet of VPC-2 . The Node-client-server in the second VPC calls the Node-server in the first VPC, and the Node-server of VPC traces the NAT IP of the request.
+
+## Basic Diagram
+```plaintext
+       +---------------------------+     +---------------------------+
+       |          VPC 1            |     |          VPC 2            |
+       |   CIDR: 10.0.0.0/16       |     |   CIDR: 10.1.0.0/16       |
+       |                           |     |                           |
+       |   +-----------------+     |     |   +-----------------+     |
+       |   |  Public Subnet  |     |     |   |  Public Subnet  |     |
+       |   |  CIDR: 10.0.1.0/24 |     |     |  CIDR: 10.1.1.0/24 |     |
+       |   +-----------------+     |     |   +-----------------+     |
+       |         |                 |     |         |                 |
+       |   +-----------------+     |     |   +-----------------+     |
+       |   | Node-Server  |     |     |   | Bastion Server 2 |     |
+       |   +-----------------+     |     |   +-----------------+     |
+       |         |                 |     |         |                 |
+       |   +-----------------+     |     |   +-----------------+     |
+       |   |  Private Subnet |     |     |   |  Private Subnet |     |
+       |   |  CIDR: 10.0.2.0/24 |     |     |  CIDR: 10.1.2.0/24 |     |
+       |   +-----------------+     |     |   +-----------------+     |
+       |         |                 |     |         |                 |
+       |   +-----------------+     |     |   +-----------------+     |
+       |   | Bastion Server 1 |     |     |   | Node-client-Server  |     |
+       |   +-----------------+     |     |   +-----------------+     |
+       +---------------------------+     +---------------------------+
+```
