@@ -201,6 +201,13 @@ app.listen(port, () => {
 ![image](https://s3.brilliant.com.bd/blog-bucket/thumbnail/d7cfe561-9787-4a7f-b3b5-1824323f8df1.png)
 ![image](https://s3.brilliant.com.bd/blog-bucket/thumbnail/264c3ac5-6eb4-4b05-a62f-28325450f771.png)
 
+
+`Check task overview after runing task `
+
+![image](https://s3.brilliant.com.bd/blog-bucket/thumbnail/33083062-d779-4aa8-bf91-852627767a5a.png)
+
+
+
 ### **Step 6: Create a GitHub Actions Workflow**
 
 To automate your deployment process using GitHub Actions, follow these steps:
@@ -212,67 +219,55 @@ To automate your deployment process using GitHub Actions, follow these steps:
 4. In `deploy.yml`, add the following content:
 
 ```yaml
-name: Deploy to Amazon ECS
+name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ "main" ]
-
-env:
-  AWS_REGION: us-east-1
-  DOCKER_HUB_REPO: your-dockerhub-username/node-app  # Update this
-  ECS_SERVICE: node-app-service
-  ECS_CLUSTER: node-app-cluster
-  CONTAINER_NAME: node-app-container
-
-permissions:
-  contents: read
+    branches:
+      - main
 
 jobs:
-  deploy:
-    name: Deploy
+  build:
     runs-on: ubuntu-latest
-    environment: production
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ env.AWS_REGION }}
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
 
-    - name: Login to Docker Hub
-      uses: docker/login-action@v2
-      with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_TOKEN }}
+      - name: Install dependencies
+        run: npm install
 
-    - name: Build and push Docker image
-      uses: docker/build-push-action@v4
-      with:
-        context: .
-        push: true
-        tags: ${{ env.DOCKER_HUB_REPO }}:${{ github.sha }},${{ env.DOCKER_HUB_REPO }}:latest
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
 
-    - name: Fill in the new image ID in the Amazon ECS task definition
-      id: task-def
-      uses: aws-actions/amazon-ecs-render-task-definition@v1
-      with:
-        task-definition: task-definition.json
-        container-name: ${{ env.CONTAINER_NAME }}
-        image: ${{ env.DOCKER_HUB_REPO }}:${{ github.sha }}
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - name: Deploy Amazon ECS task definition
-      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-      with:
-        task-definition: ${{ steps.task-def.outputs.task-definition }}
-        service: ${{ env.ECS_SERVICE }}
-        cluster: ${{ env.ECS_CLUSTER }}
-        wait-for-service-stability: true
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/nodeecs:v1.6
+
+      - name: Deploy to ECS
+        run: |
+          aws ecs update-service --cluster node-cluster --service update-svc --force-new-deployment
 ```
 
 **Note**: You’ll need to set the following values as GitHub secrets in your repository settings:
@@ -283,6 +278,17 @@ jobs:
 
 ---
 
+# Expose with Poridhi Loab balancer 
+
+1. Copy Public IP from your ECS instance 
+
+2. In Enter IP section Paster your public instance public IP and http listen port 
+
+![image](https://s3.brilliant.com.bd/blog-bucket/thumbnail/1967fc53-92bb-4b74-9603-4160b4446c9e.png)
+
+3. Copy this url 
+
+![image](https://s3.brilliant.com.bd/blog-bucket/thumbnail/b3ed68fe-46f3-4a32-b13e-6e8ccb16a3da.png)
 
 
 
