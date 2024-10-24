@@ -108,6 +108,7 @@ You can now connect to your PostgreSQL database using:
 Now PostgreSQL is ready on your EC2 instance! Make sure to properly secure your database before using it in production.
 
 ---
+# Deploy Nodejs application With ECS cluster 
 
 ### **Step 1: Create an ECS Cluster**
 1. **Navigate to the ECS Dashboard** in the AWS Management Console.
@@ -290,5 +291,7 @@ jobs:
 
 ![image](https://s3.brilliant.com.bd/blog-bucket/thumbnail/b3ed68fe-46f3-4a32-b13e-6e8ccb16a3da.png)
 
+
+![image](https://s3.brilliant.com.bd/blog-bucket/thumbnail/4aae0b43-3331-4445-bb9f-08aaee806a6b.png)
 
 
