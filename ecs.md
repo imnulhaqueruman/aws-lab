@@ -119,12 +119,12 @@ Now PostgreSQL is ready on your EC2 instance! Make sure to properly secure your 
 
 4. Select **Amazon EC2 instance** as the launch type.
 5. Choose **Amazon Linux 2** for the OS.
-6. Choose **t2.micro** as the instance type (for free tier).
+6. Choose **t3.medium** as the instance type.
 7. Leave the rest of the settings as default.
 8. Click **Create** to complete the cluster creation.
 
 
-![image](https://s3.brilliant.com.bd/blog-bucket/thumbnail/766451bd-f9b1-4b67-a91c-ba201386195e.png)
+![image](https://s3.brilliant.com.bd/blog-bucket/thumbnail/8072dc89-6ce2-4157-a18b-f7deeed08fb2.png)
 
 ![image](https://s3.brilliant.com.bd/blog-bucket/thumbnail/1b135ac2-4ccd-47a6-a429-45042f4ed0e1.png)
 
