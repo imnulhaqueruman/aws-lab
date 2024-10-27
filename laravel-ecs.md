@@ -565,6 +565,7 @@ This document completes the MySQL deployment on an Ubuntu EC2 instance. Adjust s
 ![env](https://s3.brilliant.com.bd/blog-bucket/thumbnail/62af3750-28bb-443b-8c88-33ca9679d171.png)
 
 ` You have to set this environment for Laravel app `
+
 8. Click **Create** to finish creating the task definition.
 
 `Note` 
@@ -612,7 +613,7 @@ This document completes the MySQL deployment on an Ubuntu EC2 instance. Adjust s
 [dns](https://s3.brilliant.com.bd/blog-bucket/thumbnail/f4c626c6-656b-4798-aed0-235ed83c5154.png)
 ---
 
-And Finally Here is Laravel to do app 
+And Finally Here is Laravel to do app ecs
 
 ![image](https://s3.brilliant.com.bd/blog-bucket/thumbnail/3ce04ce6-bfae-4ae1-8d8c-08bf5255eaaf.png)
 
