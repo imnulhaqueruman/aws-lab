@@ -357,7 +357,7 @@ CMD ["php-fpm"]
 
 Here's a deployment document for setting up MySQL on an Ubuntu EC2 instance:
 
----
+
 
 # **Deploy MySQL on EC2 (Ubuntu)**
 
@@ -472,7 +472,7 @@ mysql -u yourusername -h <your-ec2-public-dns> -p
 
 Consider using tools like `mysqldump` for database backups or configuring automated backup solutions in AWS for data reliability.
 
----
+
 
 This document completes the MySQL deployment on an Ubuntu EC2 instance. Adjust security configurations as needed for production use.
 
@@ -520,7 +520,7 @@ This document completes the MySQL deployment on an Ubuntu EC2 instance. Adjust s
   * default secuirty group 
   * alb secuirty group 
 
----
+
 
 ### **Step 2: Create a Target Group**
 1. Open the **EC2 Dashboard** in the AWS Management Console.
@@ -542,7 +542,7 @@ This document completes the MySQL deployment on an Ubuntu EC2 instance. Adjust s
 6. In the **Routing** section, select the target group you created earlier (`example-tg`).
 7. Click **Create**.
 
----
+
 
 ### **Step 4: Create an ECS Task Definition**
 1. Navigate to the **ECS Dashboard** and go to **Task Definitions**.
