@@ -143,7 +143,7 @@ After runing the php server you will get a error like this
 2. **Create a Security Group for the Laravel EC2 Instance**:
    - Create another security group (e.g., `Laravel-SG`) for the application instance.
    - Add the following rules:
-     - **Inbound Rule**: Allow HTTP (port `80`) for web traffic from anywhere.
+     - **Inbound Rule**: Allow HTTP (port `8000`) for web traffic from anywhere.
      - **Inbound Rule**: Allow SSH (port `22`) from your IP for management.
 
 ---
@@ -317,7 +317,7 @@ verify:
      app:
        image: your-dockerhub-username/laravel-app:latest
        ports:
-         - "80:80"
+         - "8000:8000"
        environment:
          - APP_ENV=production
          - DB_HOST=mysql-ec2-instance-ip
