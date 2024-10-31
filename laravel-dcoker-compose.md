@@ -1,5 +1,7 @@
 # Deploy Laravel App on EC2 Instance with Docker Compose
 
+![image](![alt text](image.png))
+
 This comprehensive guide walks you through deploying a Laravel application on AWS EC2 instances using Docker Compose. We'll create a production-ready environment with a custom VPC, properly configured subnets, and security groups. The setup includes separate instances for MySQL and Laravel, containerized with Docker for easy management and scalability.
 
 ## Prerequisites
