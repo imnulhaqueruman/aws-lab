@@ -2,7 +2,7 @@
 
 This guide demonstrates how to use Pulumi with Python to automate the deployment of a Laravel application with MySQL on AWS.
 
-![alt text](image-2.png)
+![alt text](https://s3.brilliant.com.bd/blog-bucket/thumbnail/0fea4b63-8cea-4542-87a7-4e06159f4611.png)
 
 ## Prerequisites
 - Python 3.7 or later
