@@ -1,6 +1,8 @@
 # Automated Laravel Deployment on AWS using Pulumi and GitHub Actions
-![alt text](image-1.png)
+
 This guide demonstrates how to automate the deployment of a Laravel application on AWS infrastructure using Pulumi for infrastructure as code and GitHub Actions for CI/CD. We'll set up a two-tier architecture with MySQL and Laravel running on separate EC2 instances.
+
+![alt text](https://s3.brilliant.com.bd/blog-bucket/thumbnail/e204847c-8491-4f61-9fc7-f38b1cab0d54.png)
 
 ## Architecture Overview
 
