@@ -2,7 +2,7 @@
 
 Deploying a Laravel application to AWS Elastic Container Service (ECS) using Docker involves setting up infrastructure components to run the application reliably in a scalable, containerized environment. Below is a detailed guide for deploying Laravel on ECS:
 
-![alt text](image-3.png)
+![alt text](https://s3.brilliant.com.bd/blog-bucket/thumbnail/98689b3a-238a-489e-bae8-fd447797f209.png)
 
 
 
