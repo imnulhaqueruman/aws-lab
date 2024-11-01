@@ -1,8 +1,11 @@
 # Deploy Laravel App on EC2 Instance with Docker Compose
+---
 
 This comprehensive guide walks you through deploying a Laravel application on AWS EC2 instances using Docker Compose. We'll create a production-ready environment with a custom VPC, properly configured subnets, and security groups. The setup includes separate instances for MySQL and Laravel, containerized with Docker for easy management and scalability.
 
 ![image](https://s3.brilliant.com.bd/blog-bucket/thumbnail/9395f33d-0ba2-41c8-af8f-64e63416ad6f.png)
+
+---
 
 ## Prerequisites
 - AWS Account with appropriate permissions
@@ -17,6 +20,8 @@ This comprehensive guide walks you through deploying a Laravel application on AW
 `This will open a VS Code server instance for you ` 
 
 ![image](https://s3.brilliant.com.bd/blog-bucket/thumbnail/56de24f8-2f4f-4c85-b042-d9fc55f3c2ea.png)
+
+---
 
 #### Create a Makefile to install Laravel prerequisites ,  clone the Laravel todo app repository and docker in Poridhi VS Code server . 
  
@@ -198,6 +203,7 @@ Replace `your-key-pair.pem` with your private key file and `<your-ec2-public-dns
    sudo systemctl start mysql
    sudo systemctl enable mysql
    ```
+--- 
 
 ### **Step 4: Secure MySQL Installation**
 
@@ -238,6 +244,7 @@ sudo mysql_secure_installation
    GRANT ALL PRIVILEGES ON *.* TO 'poridhi'@'%' WITH GRANT OPTION;
    FLUSH PRIVILEGES;
    ```
+--- 
 
 ## Step 5: Update .env file with database 
  Edit the `.env` file to connect to the MySQL EC2 instance:
@@ -250,6 +257,7 @@ sudo mysql_secure_installation
    DB_USERNAME=laravel_user
    DB_PASSWORD=laravel_password
    ```
+---
 ## Step 6 : Build docker image and push to docker hub 
 
 1. `docker login`
@@ -258,6 +266,8 @@ sudo mysql_secure_installation
 
 ![image](https://s3.brilliant.com.bd/blog-bucket/thumbnail/e9d76044-9164-4e1f-be8c-6a8591b7bc87.png)
 
+---
+
 ## Step 7: Deploy Laravel on the Laravel EC2 Instance
 
 1. **SSH into the Laravel EC2 instance**:
@@ -265,8 +275,9 @@ sudo mysql_secure_installation
    ```bash
    ssh -i your-key.pem ec2-user@laravel-ec2-instance-ip
    ```
-2. Install docker and docker compose  
-   * create a make file to install docker and docker compose  
+2. **Install docker and docker compose** 
+
+`create a make file to install docker and docker compose ` 
 
 ```bash
    # Makefile for installing Docker and Docker Compose
@@ -308,7 +319,7 @@ verify:
 	@echo "All installations verified successfully."
 
    ```
-
+---
 3. **Create a Docker Compose file for Laravel**:
 
    ```yaml
@@ -328,7 +339,7 @@ verify:
          - DB_USERNAME=laravel_user
          - DB_PASSWORD=laravel_password
    ```
-
+--- 
 5. **Start Laravel Application**:
 
    ```bash
@@ -360,6 +371,8 @@ verify:
 This setup isolates MySQL and Laravel in separate instances within a secure VPC, while Docker Compose simplifies the application management on each EC2 instance.
 
 
+---
+
 ## Expose your Laravel application to the internet using the Poridhi Load Balancer  
 
 1. Click to load balancer icon in Poridhi lab console, then open a prompt for you 
@@ -375,7 +388,5 @@ This setup isolates MySQL and Laravel in separate instances within a secure VPC,
 Open the URL in your browser and you will see your Laravel app 
 
 ![image](https://s3.brilliant.com.bd/blog-bucket/thumbnail/bf93ad61-95f2-4c8a-b0bf-c6620420dba3.png)
-
-
 
 

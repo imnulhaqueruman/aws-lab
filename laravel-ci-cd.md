@@ -4,6 +4,7 @@ This guide demonstrates how to automate the deployment of a Laravel application 
 
 ![alt text](https://s3.brilliant.com.bd/blog-bucket/thumbnail/e204847c-8491-4f61-9fc7-f38b1cab0d54.png)
 
+--- 
 ## Architecture Overview
 
 ![Architecture Diagram]
@@ -12,6 +13,7 @@ This guide demonstrates how to automate the deployment of a Laravel application 
 - Security Groups for both instances
 - Automated key pair management
 - GitHub Actions for CI/CD pipeline
+--- 
 
 ## Prerequisites
 
@@ -19,6 +21,7 @@ This guide demonstrates how to automate the deployment of a Laravel application 
 - GitHub Account
 - Pulumi Account (optional - can use local backend)
 - Docker Hub Account (for container registry)
+--- 
 
 ## Project Structure
 ```
@@ -34,6 +37,7 @@ laravel-aws-deployment/
 │   └── docker-compose.yml
 └── Makefile
 ```
+--- 
 
 `After opening the Poridhi lab, click the VS Code icon` 
 
@@ -42,6 +46,8 @@ laravel-aws-deployment/
 `This will open a VS Code server instance for you ` 
 
 ![image](https://s3.brilliant.com.bd/blog-bucket/thumbnail/56de24f8-2f4f-4c85-b042-d9fc55f3c2ea.png)
+
+--- 
 
 ### Create a Makefile to install Laravel prerequisites , clone the Laravel todo app repository and docker in Poridhi VS Code server . 
 
@@ -239,6 +245,8 @@ help:
 	@echo "  clean              - Clean up installation files"
 	@echo "  help               - Show this help message"
 ```
+
+--- 
 ## Laravel setup instructions
 
 1. Install php 8.1 and extensions
@@ -259,7 +267,7 @@ make setup_laravel
 ```
 `After setup the laravel project update the .env file `
 
-
+--- 
 ## Pulumi project setup instructions 
 
 1. Install Pulumi
@@ -285,7 +293,7 @@ make create_project
 * For dev stack press Enter 
 * Press Enter for passphrase
 * change region to `ap-northeast-3`
-
+--- 
  
 ## AWS CLI setup instructions 
 
@@ -297,6 +305,8 @@ make install_aws
 ```bash
 make configure_aws
 ```
+--- 
+
 ## Infrastructure Code to create a VPC , Subnet , Security Group , Key Pair , EC2 Instance 
 
 Replace the contents of `__main__.py` with:
@@ -557,7 +567,7 @@ pulumi.export('laravel_public_ip', laravel_instance.public_ip)
 pulumi.export('ssh_config', combined_output)
 ```
 
-
+--- 
 
 ## Deployment
 
@@ -720,6 +730,7 @@ jobs:
         if: failure()
         run: echo "Deployment failed!"
 ```
+--- 
 
 5. Push your code to trigger the deployment:
 ```bash
@@ -729,6 +740,8 @@ git push origin main
 ```
 
 `Successfully deployed with ci/cd github actions`
+
+
 ![image](https://s3.brilliant.com.bd/blog-bucket/thumbnail/a23e2994-0054-41a6-88e9-4ca0208d09b2.png)
 
 `Expose with poirdhi load balancer`

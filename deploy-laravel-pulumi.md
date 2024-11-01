@@ -4,6 +4,8 @@ This guide demonstrates how to use Pulumi with Python to automate the deployment
 
 ![alt text](https://s3.brilliant.com.bd/blog-bucket/thumbnail/0fea4b63-8cea-4542-87a7-4e06159f4611.png)
 
+--- 
+
 ## Prerequisites
 - Python 3.7 or later
 - Pulumi CLI
@@ -12,6 +14,8 @@ This guide demonstrates how to use Pulumi with Python to automate the deployment
 - Docker and Docker Compose
 
 ## # Create a Makefile with the following content to setup aws cli , pulumi and venv envrionment in poridhi VS Code server 
+
+
 ```makefile
 # Makefile for AWS CLI and Pulumi Installation and Configuration
 
@@ -197,7 +201,7 @@ source ~/.bashrc
 python3 -m venv venv
 source venv/bin/activate
 ```
-
+---
 
 ## Project Structure
 
@@ -209,6 +213,7 @@ pulumi-laravel-aws/
 ├── requirements.txt
 └── venv/
 ```
+--- 
 
 ## Infrastructure Code to create a VPC , Subnet , Security Group , Key Pair , EC2 Instance 
 
@@ -470,7 +475,7 @@ pulumi.export('laravel_public_ip', laravel_instance.public_ip)
 pulumi.export('ssh_config', combined_output)
 ```
 
-
+---
 
 ## Deployment
 
@@ -526,7 +531,7 @@ docker-compose up -d
 ```
 ![image](https://s3.brilliant.com.bd/blog-bucket/thumbnail/8cb50c50-8c8f-4cbe-9037-2225d06e39de.png)
 
-
+---
 
 
 
