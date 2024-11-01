@@ -1,6 +1,15 @@
-# Laravel Todo App Setup Guide
+# Deploy Laravel In ECS cluster 
 
-## Prerequisites Installation Guide
+Deploying a Laravel application to AWS Elastic Container Service (ECS) using Docker involves setting up infrastructure components to run the application reliably in a scalable, containerized environment. Below is a detailed guide for deploying Laravel on ECS:
+
+![alt text](image-3.png)
+
+
+
+
+##  Laravel Todo App Setup Guide
+
+### Prerequisites Installation Guide
 
 ### 1. Update System
 ```bash
@@ -9,7 +18,7 @@ sudo apt update && sudo apt upgrade
 
 ### 2. Install PHP and Required Extensions
 ```bash
-sudo apt install php8.1 php8.1-common php8.1-cli php8.1-curl php8.1-mbstring php8.1-xml php8.1-zip php8.1-mysql php8.1-gd unzip
+sudo apt install php8.1 php8.1- common php8.1-cli php8.1-curl php8.1-mbstring php8.1-xml php8.1-zip php8.1-mysql php8.1-gd unzip
 ```
 
 To verify PHP installation:
